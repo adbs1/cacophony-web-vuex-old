@@ -1,6 +1,6 @@
 import api from '../../api/index';
 
-const state =  {
+const state = {
   isLoggingIn: false,
   didInvalidate: false,
   JWT: localStorage.getItem('JWT'),
@@ -29,11 +29,11 @@ const actions = {
       api.user.login(payload.username, payload.password)
         .then(response => response.json())
         .then((json) => {
-          if(!json.success) {
+          if (!json.success) {
             context.commit('rejectLogin', json);
             reject(json);
           }
-          api.user.persistUser(json.userData.username,json.token);
+          api.user.persistUser(json.userData.username, json.token);
           context.commit('receiveLogin', json);
           resolve(json);
         });
@@ -49,10 +49,10 @@ const actions = {
       api.user.register(payload.username, payload.password)
         .then(response => response.json())
         .then((json) => {
-          if(!json.success) {
+          if (!json.success) {
             reject(json);
           }
-          api.user.persistUser(json.userData.username,json.token);
+          api.user.persistUser(json.userData.username, json.token);
           context.commit('receiveLogin', json);
           resolve(json);
         });
@@ -66,32 +66,32 @@ const mutations = {
     state.JWT = "";
   },
   rejectLogin (state, data) {
-    state.JWT = '',
+    state.JWT = '';
     state.errorMessage = data.messages || data.message;
   },
   receiveLogin (state, data) {
     state.JWT = data.token;
-    state.userData= data.userData;
+    state.userData = data.userData;
   }
-//	pushProductToCart (state, { id }) {
-//		state.items.push({
-//			id,
-//			quantity: 1
-//		})
-//	},
-//
-//	incrementItemQuantity (state, { id }) {
-//		const cartItem = state.items.find(item => item.id === id)
-//		cartItem.quantity++
-//	},
-//
-//	setCartItems (state, { items }) {
-//		state.items = items
-//	},
-//
-//	setCheckoutStatus (state, status) {
-//		state.checkoutStatus = status
-//	}
+  //pushProductToCart (state, { id }) {
+  //  state.items.push({
+  //    id,
+  //    quantity: 1
+  //  })
+  //},
+  //
+  //incrementItemQuantity (state, { id }) {
+  //  const cartItem = state.items.find(item => item.id === id)
+  //  cartItem.quantity++
+  //},
+  //
+  //setCartItems (state, { items }) {
+  //  state.items = items
+  //},
+  //
+  //setCheckoutStatus (state, status) {
+  //  state.checkoutStatus = status
+  //}
 };
 
 export default {

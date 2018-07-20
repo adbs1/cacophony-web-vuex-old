@@ -14,10 +14,10 @@ function login(username, password) {
   return fetch(
     `${Config.api}/authenticate_user`,
     {
-      method:"POST",
-      body:body,
-      headers:{
-        'Content-Type':'application/x-www-form-urlencoded; charset=utf-8'
+      method: "POST",
+      body: body,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
       }
     }
   );
@@ -26,7 +26,7 @@ function persistUser(username, token) {
   localStorage.setItem('username', username);
   localStorage.setItem('JWT', token);
 }
-function logout(){
+function logout() {
   localStorage.setItem('username', '');
   localStorage.setItem('JWT', '');
 }
@@ -38,10 +38,10 @@ function register(username, password) {
   return fetch(
     `${Config.api}/api/v1/Users`,
     {
-      method:"POST",
-      body:body,
-      headers:{
-        'Content-Type':'application/x-www-form-urlencoded; charset=utf-8'
+      method: "POST",
+      body: body,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
       }
     }
   );

@@ -3,7 +3,6 @@
 </template>
 
 <script>
-
 export default {
   // https://vuejs.org/v2/style-guide/#Multi-word-component-names-essential
   name: 'DevicesView',
@@ -11,11 +10,9 @@ export default {
   props: {},
   // https://vuejs.org/v2/style-guide/#Component-data-essential
   data () {
-    return {
-    };
+    return {};
   },
   // https://vuejs.org/v2/style-guide/#Simple-computed-properties-strongly-recommended
-  computed: {
-  },
+  computed: {}
 };
 </script>
